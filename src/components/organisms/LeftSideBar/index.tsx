@@ -5,7 +5,7 @@ import {BiHomeCircle, BiSearch} from "react-icons/bi";
 import {FaUserAstronaut} from "react-icons/fa";
 import Button from "../../molecules/Button";
 
-const NAVIGATION_ITEMS = [
+export const NAVIGATION_ITEMS = [
     {
         title: 'Home',
         icon: BiHomeCircle,

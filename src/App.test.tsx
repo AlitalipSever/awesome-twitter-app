@@ -2,8 +2,20 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+  test('renders Home page by default', () => {
+    render(
+        <App />
+    );
+
+    expect(screen.getByText('Home')).toBeInTheDocument();
+  });
+
+  test('renders Profile page when navigated to /profile', () => {
+    render(
+        <App />
+    );
+
+    expect(screen.getByText('Profile')).toBeInTheDocument();
+  });
 });
