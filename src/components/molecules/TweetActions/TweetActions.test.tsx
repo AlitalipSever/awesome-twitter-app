@@ -1,10 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import TweetActions from './index';
+import { useTweets } from '../../../hooks/useTweets';
+const { toggleLike } = useTweets();
 
 describe('<TweetActions />', () => {
   beforeEach(() => {
-    render(<TweetActions />);
+    render(<TweetActions onLikeToggle={toggleLike} id={'123'} liked={true} />);
   });
 
   it('renders all action buttons', () => {
