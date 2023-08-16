@@ -13,6 +13,7 @@
     "@types/react-router-dom": "^5.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
@@ -24,7 +25,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
+    "format": "prettier --write src/**/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
@@ -45,12 +48,29 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
+    "@storybook/addon-essentials": "^7.3.0",
+    "@storybook/addon-interactions": "^7.3.0",
+    "@storybook/addon-links": "^7.3.0",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/blocks": "^7.3.0",
+    "@storybook/preset-create-react-app": "^7.3.0",
+    "@storybook/react": "^7.3.0",
+    "@storybook/react-webpack5": "^7.3.0",
+    "@storybook/testing-library": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
+    "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.1",
-    "prettier": "^3.0.1"
+    "eslint-plugin-storybook": "^0.6.13",
+    "postcss": "^8.4.27",
+    "prettier": "^3.0.1",
+    "prop-types": "^15.8.1",
+    "storybook": "^7.3.0",
+    "tailwindcss": "^3.3.3",
+    "webpack": "^5.88.2"
   }
 }
