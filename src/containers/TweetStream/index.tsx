@@ -16,6 +16,7 @@ const TweetStream: React.FC<TweetStreamProps> = () => {
     error,
     toggleShowLiked,
     showLiked,
+    likedTweetCount,
   } = useTweets();
 
   if (loading) return <Loading />;
@@ -25,7 +26,7 @@ const TweetStream: React.FC<TweetStreamProps> = () => {
   return (
     <div>
       <div>
-        {' '}
+        {likedTweetCount}
         <button onClick={toggleShowLiked}>
           {showLiked ? 'Show All Tweets' : 'Show Liked Tweets'}
         </button>
