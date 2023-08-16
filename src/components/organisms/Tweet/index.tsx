@@ -3,7 +3,7 @@ import TweetActions from '../../molecules/TweetActions';
 import UserProfile from '../../molecules/TweetUserProfile';
 import UserAvatar from '../../atoms/UserAvatar';
 
-interface TweetProps {
+export interface TweetProps {
   username: string;
   handle: string;
   content: string;
