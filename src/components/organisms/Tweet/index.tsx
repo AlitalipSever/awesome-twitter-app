@@ -19,7 +19,7 @@ const Tweet: React.FC<TweetProps> = ({
   avatarUrl,
 }) => {
   return (
-    <div className="border-b border-t p-4 mx-auto mt-4">
+    <div className="border-b p-4 mx-auto mt-4">
       <div className="flex">
         <UserAvatar avatarUrl={avatarUrl} username={username} />
         <div className="flex-1">
