@@ -2,8 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Tweet from './index';
-
+import Tweet, { TweetProps } from './index';
 describe('<Tweet />', () => {
   const mockProps = {
     username: 'Ali Sever',
@@ -11,7 +10,8 @@ describe('<Tweet />', () => {
     content: 'This is a sample tweet content.',
     timestamp: '2h',
     avatarUrl: 'https://via.placeholder.com/150',
-  };
+    receivedAt: 1234,
+  } as TweetProps;
 
   beforeEach(() => {
     render(<Tweet {...mockProps} />);

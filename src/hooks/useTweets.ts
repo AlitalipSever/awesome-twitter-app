@@ -10,7 +10,11 @@ export const useTweets = () => {
   useEffect(() => {
     const subscription = tweetService.getTweets().subscribe(
       (tweet) => {
-        setTweets((prevTweets: TweetProps[]) => [tweet, ...prevTweets]);
+        const timestampedTweet = { ...tweet, receivedAt: Date.now() };
+        setTweets((prevTweets: TweetProps[]) => [
+          timestampedTweet,
+          ...prevTweets,
+        ]);
         setLoading(false);
       },
       (err) => {
@@ -20,6 +24,16 @@ export const useTweets = () => {
     );
 
     return () => subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTweets((currentTweets) =>
+        currentTweets.filter((tweet) => Date.now() - tweet.receivedAt < 30000),
+      );
+    }, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return { tweets, loading, error };

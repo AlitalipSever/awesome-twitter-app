@@ -4,6 +4,7 @@ import UserProfile from '../../molecules/TweetUserProfile';
 import UserAvatar from '../../atoms/UserAvatar';
 
 export interface TweetProps {
+  receivedAt: number;
   username: string;
   handle: string;
   content: string;
