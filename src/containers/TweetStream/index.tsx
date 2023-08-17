@@ -5,6 +5,7 @@ import Loading from '../../components/atoms/Loading';
 import Error from '../../components/atoms/Error';
 import NoTweets from '../../components/atoms/NoTweets';
 import { Tweet as TweetType } from '../../types/Tweet';
+import Button from '../../components/molecules/Button';
 
 interface TweetStreamProps {}
 const TweetStream: React.FC<TweetStreamProps> = () => {
@@ -19,26 +20,40 @@ const TweetStream: React.FC<TweetStreamProps> = () => {
     likedTweetCount,
   } = useTweets();
 
-  if (loading) return <Loading />;
-  if (error) return <Error message={error.message} />;
-  if (tweets.length === 0) return <NoTweets />;
+  const getContent = () => {
+    if (loading) {
+      return <Loading />;
+    }
+    if (error) {
+      return <Error message={'error'} />;
+    }
+    if (tweets.length === 0) {
+      return <NoTweets />;
+    }
+  };
 
   return (
     <div>
-      <div>
-        {likedTweetCount}
-        <button onClick={toggleShowLiked}>
-          {showLiked ? 'Show All Tweets' : 'Show Liked Tweets'}
-        </button>
-        <button onClick={clearTweets}>Clear Tweets</button>
+      <div className="bg-gray-100 p-4 rounded-md shadow-md space-y-2 space-x-6">
+        <span className="text-lg font-bold">
+          Liked tweet count: {likedTweetCount}
+        </span>
+        <Button
+          label={showLiked ? 'Show All Tweets' : 'Show Liked Tweets'}
+          size={'small'}
+          onClick={toggleShowLiked}
+        />
+        <Button
+          label={'Clear Tweets'}
+          size={'small'}
+          onClick={clearTweets}
+          className="bg-red-500"
+        />
       </div>
+      <div>{getContent()}</div>
       <div>
         {tweets.map((tweet: TweetType) => (
-          <Tweet
-            onLikeToggle={toggleLike}
-            key={`${tweet.username}-${tweet.timestamp}`}
-            {...tweet}
-          />
+          <Tweet onLikeToggle={toggleLike} key={tweet.id} {...tweet} />
         ))}
       </div>
     </div>
