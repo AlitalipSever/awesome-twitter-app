@@ -4,9 +4,23 @@ import {
   FaRetweet,
   FaRegHeart,
   FaShareSquare,
+  FaHeart,
 } from 'react-icons/fa';
 
-const TweetActions: React.FC = () => {
+interface TweetActionProps {
+  onLikeToggle: (id: string) => void;
+  id: string;
+  liked: boolean;
+}
+
+const TweetActions: React.FC<TweetActionProps> = ({
+  onLikeToggle,
+  id,
+  liked,
+}) => {
+  const onClickHandler = () => {
+    onLikeToggle(id);
+  };
   return (
     <div className="flex justify-between mt-4 text-gray-500">
       <button className="flex items-center gap-2 hover:text-blue-500">
@@ -21,9 +35,12 @@ const TweetActions: React.FC = () => {
         </div>
         <span>Retweet</span>
       </button>
-      <button className="flex items-center gap-2 hover:text-red-500">
+      <button
+        className="flex items-center gap-2 hover:text-red-500"
+        onClick={onClickHandler}
+      >
         <div className="p-2 rounded-full hover:bg-red-100">
-          <FaRegHeart size={20} />
+          {liked ? <FaHeart size={20} color="red" /> : <FaRegHeart size={20} />}
         </div>
         <span>Like</span>
       </button>

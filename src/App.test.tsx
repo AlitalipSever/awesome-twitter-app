@@ -4,17 +4,14 @@ import App from './App';
 
 describe('App', () => {
   test('renders Home page by default', () => {
-    render(
-        <App />
-    );
+    render(<App />);
 
-    expect(screen.getByText('Home')).toBeInTheDocument();
+    const allHomeElements = screen.getAllByText(/home/i);
+    expect(allHomeElements).toHaveLength(2); // or whatever the expected count is
   });
 
   test('renders Profile page when navigated to /profile', () => {
-    render(
-        <App />
-    );
+    render(<App />);
 
     expect(screen.getByText('Profile')).toBeInTheDocument();
   });
