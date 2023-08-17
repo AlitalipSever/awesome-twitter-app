@@ -1,46 +1,106 @@
-# Getting Started with Create React App
+# awesome-twitter-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple Twitter-like web application built using React, TypeScript, RxJS, StoryBook, and styled with TailwindCSS.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+You can view the live application here: [https://awesome-twitter-app.vercel.app](https://awesome-twitter-app.vercel.app)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. **Simulated Tweet Stream**: The application simulates a stream of tweets and displays them in descending order based on their timestamp.
+2. **Tweet Expiry**: Tweets older than 30 seconds are automatically removed from the list.
+3. **Like/Unlike Tweets**: Users can like or unlike tweets. Liked tweets are visually distinct from regular tweets.
+4. **Liked Tweets Counter**: A counter displays the number of liked tweets.
+5. **Toggle Display**: Users can toggle between viewing all tweets and only liked tweets.
+6. **Clear Tweets**: Users can clear the entire list of tweets with a single click.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Setup Instructions
 
-### `npm test`
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/AlitalipSever/awesome-twitter-app
+   cd awesome-twitter-app
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install Dependencies**:
+   ```bash
+   yarn install
+   ```
 
-### `npm run build`
+3. **Run the Application**:
+   ```bash
+   yarn start
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Design Decisions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **State Management with RxJS**: Given the real-time nature of the application, RxJS was chosen for state management. It allows for a reactive approach, especially when dealing with streams of data like tweets.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Component Structure**: The application follows the atomic design principle, breaking down the UI into atoms, molecules, and organisms. This ensures reusability and modularity of components.
 
-### `npm run eject`
+3. **TailwindCSS for Styling**: TailwindCSS provides utility-first classes that make it easy to build responsive and maintainable UIs. It's integrated into the project to ensure a consistent and modern design.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. **TypeScript for Type Safety**: TypeScript ensures type safety, making the codebase more robust and easier to maintain.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. **Custom Hooks**: Custom hooks like `useTweets` are used to encapsulate and manage the application's state and side effects.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Future Enhancements
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. **Persistent State**: Integrate with local storage or a backend to make the liked state of tweets persistent.
+2. **User Authentication**: Implement user authentication to allow users to have personalized experiences.
+3. **Reply to Tweets**: Allow users to reply to tweets and view tweet threads.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Development Tooling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is equipped with several tools to ensure code quality, visual testing, and formatting:
+
+1. **Testing with Jest**: The application uses Jest for unit and component testing. Tests can be run using the script:
+   ```bash
+   yarn test
+   ```
+
+2. **Linting with ESLint**: ESLint is set up to ensure code quality and consistency. To lint the codebase, run:
+   ```bash
+   yarn lint
+   ```
+
+3. **Formatting with Prettier**: Prettier ensures that the codebase remains formatted consistently. To format the codebase, run:
+   ```bash
+   yarn format
+   ```
+
+4. **Component Visualization with Storybook**: Storybook is integrated into the project for developing and visualizing components in isolation. To start Storybook, use:
+   ```bash
+   yarn storybook
+   ```
+   To build a static version of the storybook, use:
+   ```bash
+   yarn build-storybook
+   ```
+
+---
+
+## Wireframes
+
+The wireframes for the application provide a visual representation of the user interface and flow. They serve as a blueprint for the application's structure and layout.
+
+You can view the wireframes for the home page [here](https://github.com/AlitalipSever/awesome-twitter-app/blob/main/docs/wireframes/home-page.drawio.html).
+
+> **Note**: Since the wireframes are in HTML format, you might need to download and open them in a browser to view them properly.
+
+---
+
+## Profile & CV
+
+Interested in learning more about the developer behind this application? Visit the [profile page](https://awesome-twitter-app.vercel.app/profile) of the web application to access the CV and get a deeper insight into the developer's skills and experiences.
+
+---
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+---
