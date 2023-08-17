@@ -6,6 +6,7 @@ This project is a simple Twitter-like web application built using React, TypeScr
 
 You can view the live application here: [https://awesome-twitter-app.vercel.app](https://awesome-twitter-app.vercel.app)
 
+You can view my cv here: [https://awesome-twitter-app.vercel.app/profile](https://awesome-twitter-app.vercel.app/profile)
 ## Features
 
 1. **Simulated Tweet Stream**: The application simulates a stream of tweets and displays them in descending order based on their timestamp.
@@ -19,7 +20,14 @@ You can view the live application here: [https://awesome-twitter-app.vercel.app]
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/AlitalipSever/awesome-twitter-app
+   git clone https://github.com/AlitalipSever/awesome-twitter-app.git
+   cd awesome-twitter-app
+   ```
+
+
+1. **Clone the Repository with GitFront**:
+   ```bash
+   git clone https://gitfront.io/r/user-2057111/v6SXC9auG2EN/awesome-twitter-app.git
    cd awesome-twitter-app
    ```
 
