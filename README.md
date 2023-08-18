@@ -41,6 +41,25 @@ You can view my cv here: [https://awesome-twitter-app.vercel.app/profile](https:
    yarn start
    ```
 
+## Docker Setup
+
+To run this application using Docker, follow these steps:
+
+1. **Build the Docker Image**:
+   ```bash
+   docker build -t awesome-twitter-app .
+
+2. **Run the Docker Container**:
+   ```bash
+   docker run -p 8080:80 awesome-twitter-app
+   ```
+
+3. **Access the Application**:
+   After running the container, open your browser and navigate to [http://localhost:8080](http://localhost:8080) to access the application.
+
+> **Note**: Ensure you have Docker installed and running on your machine before executing the above commands.
+
+
 ## Design Decisions
 
 1. **State Management with RxJS**: Given the real-time nature of the application, RxJS was chosen for state management. It allows for a reactive approach, especially when dealing with streams of data like tweets.
