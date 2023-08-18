@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { tweetService } from '../services/TweetService';
 import { Tweet as TweetType } from '../types/Tweet';
+import * as tweetStore from '../store/tweetStore';
+import { v4 as uuidv4 } from 'uuid';
 
 export const useTweets = () => {
   const [tweets, setTweets] = useState<TweetType[]>([]);
@@ -11,8 +11,6 @@ export const useTweets = () => {
   const [error, setError] = useState<Error | null>(null);
   const [showLiked, setShowLiked] = useState(false);
 
-  const tweets$ = new BehaviorSubject<TweetType[]>([]);
-
   useEffect(() => {
     const subscription = tweetService.getTweets().subscribe(
       (tweet) => {
@@ -20,11 +18,11 @@ export const useTweets = () => {
           ...tweet,
           receivedAt: Date.now(),
           liked: false,
-          id: crypto.randomUUID(),
+          id: uuidv4(),
         };
         setTweets((prevTweets: TweetType[]) => {
           const newTweets = [timestampedTweet, ...prevTweets];
-          tweets$.next(newTweets);
+          tweetStore.setTweets(newTweets);
           return newTweets;
         });
         setLoading(false);
@@ -49,8 +47,8 @@ export const useTweets = () => {
   }, []);
 
   useEffect(() => {
-    const likedCountSubscription = tweets$
-      .pipe(map((tweets) => tweets.filter((tweet) => tweet.liked).length))
+    const likedCountSubscription = tweetStore
+      .getLikedTweetCount()
       .subscribe((count) => setLikedTweetCount(count));
 
     return () => likedCountSubscription.unsubscribe();
@@ -61,14 +59,14 @@ export const useTweets = () => {
       const updatedTweets = currentTweets.map((tweet) =>
         tweet.id === tweetId ? { ...tweet, liked: !tweet.liked } : tweet,
       );
-      tweets$.next(updatedTweets);
+      tweetStore.setTweets(updatedTweets);
       return updatedTweets;
     });
   };
 
   const clearTweets = () => {
     setTweets([]);
-    tweets$.next([]);
+    tweetStore.setTweets([]);
   };
 
   const toggleShowLiked = () => {
