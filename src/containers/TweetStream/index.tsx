@@ -19,8 +19,7 @@ const TweetStream: React.FC<TweetStreamProps> = () => {
     showLiked,
     likedTweetCount,
   } = useTweets();
-
-  const getContent = () => {
+  const getTweetContentState = () => {
     if (loading) {
       return <Loading />;
     }
@@ -42,15 +41,17 @@ const TweetStream: React.FC<TweetStreamProps> = () => {
           label={showLiked ? 'Show All Tweets' : 'Show Liked Tweets'}
           size={'small'}
           onClick={toggleShowLiked}
+          aria-label="Toggle between all tweets and liked tweets"
         />
         <Button
           label={'Clear Tweets'}
           size={'small'}
           onClick={clearTweets}
           className="bg-red-500"
+          aria-label="Clear all tweets"
         />
       </div>
-      <div>{getContent()}</div>
+      <div>{getTweetContentState()}</div>
       <div>
         {tweets.map((tweet: TweetType) => (
           <Tweet onLikeToggle={toggleLike} key={tweet.id} {...tweet} />

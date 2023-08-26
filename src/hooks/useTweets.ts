@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { tweetService } from '../services/TweetService';
 import { Tweet as TweetType } from '../types/Tweet';
-import * as tweetStore from '../store/tweetStore';
-import { v4 as uuidv4 } from 'uuid';
+import * as tweetStore from '../store/TweetStore';
 
 export const useTweets = () => {
   const [tweets, setTweets] = useState<TweetType[]>([]);
@@ -14,11 +13,9 @@ export const useTweets = () => {
   useEffect(() => {
     const subscription = tweetService.getTweets().subscribe(
       (tweet) => {
-        const timestampedTweet = {
+        const timestampedTweet: TweetType = {
           ...tweet,
           receivedAt: Date.now(),
-          liked: false,
-          id: uuidv4(),
         };
         setTweets((prevTweets: TweetType[]) => {
           const newTweets = [timestampedTweet, ...prevTweets];
