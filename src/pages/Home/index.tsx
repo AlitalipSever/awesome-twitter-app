@@ -1,15 +1,15 @@
 import React from 'react';
-import LeftSideBar from '../../components/organisms/LeftSideBar';
 import MainContentArea from '../../components/organisms/MainContentArea';
+import Layout from '../../components/organisms/Layout';
+import CenteredLayout from '../../components/organisms/CenteredLayout';
 
 const Home: React.FC = () => {
   return (
-    <div className="w-full h-full flex justify-center items-center relative">
-      <div className="max-w-screen-xl w-full h-full flex relative">
-        <LeftSideBar />
+    <Layout>
+      <CenteredLayout headerTitle={'Home'}>
         <MainContentArea />
-      </div>
-    </div>
+      </CenteredLayout>
+    </Layout>
   );
 };
 
