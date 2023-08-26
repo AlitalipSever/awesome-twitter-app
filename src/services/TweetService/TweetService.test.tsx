@@ -1,9 +1,8 @@
 import { TestScheduler } from 'rxjs/testing';
-
 import moment from 'moment';
-import { createTweetSource } from './utils';
+import { createTweetSource } from './TweetService.utils';
 import { take } from 'rxjs';
-
+jest.mock('uuid', () => ({ v4: () => 'fixed-uuid-value' }));
 describe('createTweetSource', () => {
   let testScheduler: TestScheduler;
 
@@ -27,6 +26,8 @@ describe('createTweetSource', () => {
         username: `${attribute}User1`,
         handle: `${attribute}User1`,
         avatarUrl: URL,
+        id: 'fixed-uuid-value',
+        liked: false,
       };
 
       const source$ = createTweetSource(frequency, account, attribute, URL);

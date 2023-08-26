@@ -1,1 +1,1 @@
-export * from './tweetService';
+export * from './TweetService';

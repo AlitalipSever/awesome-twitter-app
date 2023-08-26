@@ -1,7 +1,8 @@
 import { interval } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Tweet } from './types';
+import { Tweet } from './TweetService.types';
 import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 
 export const createTweetSource = (
   frequency: number,
@@ -19,6 +20,8 @@ export const createTweetSource = (
           username: `${attribute}User${i + 1}`,
           handle: `${attribute}User${i + 1}`,
           avatarUrl: URL,
+          liked: false,
+          id: uuidv4(),
         }) as Tweet,
     ),
   );
