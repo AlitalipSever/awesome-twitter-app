@@ -1,40 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { BsBell, BsBookmark, BsEnvelope, BsTwitter } from 'react-icons/bs';
-import { BiHomeCircle, BiSearch } from 'react-icons/bi';
-import { FaUserAstronaut } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router-dom';
+import { BsTwitter } from 'react-icons/bs';
 import Button from '../../molecules/Button';
-
-interface NavItem {
-  title: string;
-  icon: React.ComponentType;
-}
-export const NAVIGATION_ITEMS: NavItem[] = [
-  {
-    title: 'Home',
-    icon: BiHomeCircle,
-  },
-  {
-    title: 'Explore',
-    icon: BiSearch,
-  },
-  {
-    title: 'Notifications',
-    icon: BsBell,
-  },
-  {
-    title: 'Messages',
-    icon: BsEnvelope,
-  },
-  {
-    title: 'Bookmarks',
-    icon: BsBookmark,
-  },
-  {
-    title: 'Profile',
-    icon: FaUserAstronaut,
-  },
-];
+import { activeClasses, baseClasses } from './LeftSideBar.styles';
+import { NAVIGATION_ITEMS } from './LeftSideBar.constants';
 
 const LeftSideBar: React.FC = () => {
   return (
@@ -46,15 +15,18 @@ const LeftSideBar: React.FC = () => {
       </Link>
       <div>
         {NAVIGATION_ITEMS.map((item) => (
-          <Link
-            className="hover:bg-gray-100 transition duration-200 flex items-center justify-start w-fit space-x-4 rounded-3xl py-2 px-6 text-2xl font-bold"
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? activeClasses : baseClasses
+            }
+            draggable={true}
             to={`/${item.title.toLowerCase()}`}
             key={item.title}
             aria-label={item.title}
           >
             <item.icon />
             <div>{item.title}</div>
-          </Link>
+          </NavLink>
         ))}
         <Button label={'Post'} />
       </div>
