@@ -13,7 +13,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 function App() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading lean />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
