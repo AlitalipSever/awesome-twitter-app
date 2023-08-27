@@ -26,3 +26,9 @@ yarn-error.log*
 .idea
 
 /storybook-static
+
+#ENV
+.env
+.env.development
+.env.staging
+.env.production

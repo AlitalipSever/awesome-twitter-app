@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app-development:
+    image: awesome-twitter-app:dev
+    ports:
+      - "3000:80"
+
+  app-staging:
+    image: awesome-twitter-app:staging
+    ports:
+      - "3001:80"
+
+  app-production:
+    image: awesome-twitter-app:prod
+    ports:
+      - "3002:80"

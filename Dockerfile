@@ -11,11 +11,18 @@ RUN echo "Installing dependencies..." && \
 
 # Copy all the files into image filesystem.
 COPY . ./
-RUN echo "Building the React app..." && \
-    yarn build
+
+ARG REACT_APP_ENV=dev
+
+RUN echo "Building the React app...with build:$REACT_APP_ENV" && \
+    yarn build:$REACT_APP_ENV
+
 
 # Stage 2: Nginx server
 FROM nginx:alpine
+
+# Copy the custom nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # nginx default host location
 COPY --from=build /app/build /usr/share/nginx/html
