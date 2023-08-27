@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { tweetService } from '../services/TweetService';
 import { Tweet as TweetType } from '../types/Tweet';
 import * as tweetStore from '../store/TweetStore';
+import { TWEET_CLEANUP_INTERVAL, TWEET_LIFETIME } from '../utils';
 
 export const useTweets = () => {
   const [tweets, setTweets] = useState<TweetType[]>([]);
@@ -36,9 +37,11 @@ export const useTweets = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTweets((currentTweets) =>
-        currentTweets.filter((tweet) => Date.now() - tweet.receivedAt < 30000),
+        currentTweets.filter(
+          (tweet) => Date.now() - tweet.receivedAt < TWEET_LIFETIME,
+        ),
       );
-    }, 1000);
+    }, TWEET_CLEANUP_INTERVAL);
 
     return () => clearInterval(intervalId);
   }, []);
