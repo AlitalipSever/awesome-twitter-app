@@ -1,18 +1,31 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  test('renders Home page by default', () => {
-    render(<App />);
+  test('renders Home page by default Loading', async () => {
+    await act(async () => {
+      render(<App />);
+    });
 
-    const allHomeElements = screen.getAllByText(/home/i);
-    expect(allHomeElements).toHaveLength(2); // or whatever the expected count is
+    const allHomeElements = screen.getAllByText(/Loading/i);
+    expect(allHomeElements).toHaveLength(1);
   });
 
-  test('renders Profile page when navigated to /profile', () => {
-    render(<App />);
+  test('renders Profile page when navigated to /profile', async () => {
+    await act(async () => {
+      render(<App />);
+    });
 
     expect(screen.getByText('Profile')).toBeInTheDocument();
+  });
+
+  test('renders Home page by default', async () => {
+    await act(async () => {
+      render(<App />);
+    });
+
+    const allHomeElements = screen.getAllByText(/Home/i);
+    expect(allHomeElements).toHaveLength(2);
   });
 });

@@ -1,5 +1,5 @@
 import { merge } from 'rxjs';
-import { createTweetSource } from './utils';
+import { createTweetSource } from './TweetService.utils';
 
 const tweetObservable = merge(
   createTweetSource(

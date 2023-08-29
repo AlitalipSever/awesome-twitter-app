@@ -1,4 +1,4 @@
-import { setTweets, getTweets, getLikedTweetCount } from './tweetStore';
+import { setTweets, getTweets, getLikedTweetCount } from './TweetStore';
 import { TestScheduler } from 'rxjs/testing';
 import { Tweet } from '../types/Tweet';
 

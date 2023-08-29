@@ -5,4 +5,6 @@ export interface Tweet {
   username: string;
   handle: string;
   avatarUrl: string;
+  id: string;
+  liked: boolean;
 }

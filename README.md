@@ -36,26 +36,114 @@ You can view my cv here: [https://awesome-twitter-app.vercel.app/profile](https:
    yarn install
    ```
 
-3. **Run the Application**:
-   ```bash
-   yarn start
+3. **Set Up Environment Variables**:
+
+   We use `.env` files to manage environment-specific configurations. Based on your needs, you can set up:
+
+   - `.env.development` for development environment.
+   - `.env.staging` for staging environment.
+   - `.env.production` for production environment.
+
+   Here's a sample structure for `.env` files:
+   ```
+   REACT_APP_ENV=dev          # .env.development
+   REACT_APP_ENV=staging      # .env.staging
+   REACT_APP_ENV=prod         # .env.production
+   REACT_APP_SOME_CONFIG=value
    ```
 
-## Docker Setup
+   Replace the placeholders with your actual values. Please ensure that you never commit sensitive information in these files. Add them to your `.gitignore` to prevent accidental commits.
 
-To run this application using Docker, follow these steps:
+## Running the Application
 
-1. **Build the Docker Image**:
+1. **Development Mode**:
    ```bash
-   docker build -t awesome-twitter-app .
-
-2. **Run the Docker Container**:
-   ```bash
-   docker run -p 8080:80 awesome-twitter-app
+   yarn start:dev
    ```
 
-3. **Access the Application**:
-   After running the container, open your browser and navigate to [http://localhost:8080](http://localhost:8080) to access the application.
+2. **Staging Mode**:
+   ```bash
+   yarn start:staging
+   ```
+
+3. **Production Mode**:
+   ```bash
+   yarn start:prod
+   ```
+
+## Building the Application
+
+1. **Development Build**:
+   ```bash
+   yarn build:dev
+   ```
+
+2. **Staging Build**:
+   ```bash
+   yarn build:staging
+   ```
+
+3. **Production Build**:
+   ```bash
+   yarn build:prod
+   ```
+
+---
+
+## Docker & Docker Compose Usage
+
+Our application is designed to be containerized using Docker. Additionally, we utilize Docker Compose for orchestrating multi-container applications.
+
+### Building the Docker Images
+
+For each environment, we have tailored Docker commands:
+
+1. **Development Docker Build**:
+   ```bash
+   yarn docker:build:dev
+   ```
+
+2. **Staging Docker Build**:
+   ```bash
+   yarn docker:build:staging
+   ```
+
+3. **Production Docker Build**:
+   ```bash
+   yarn docker:build:prod
+   ```
+
+Each build command uses the `--build-arg` option to pass environment-specific values to the Docker build process.
+
+### Running the Application with Docker Compose
+
+After building the Docker images, you can utilize Docker Compose to run the containers. The provided `docker-compose.yml` file defines services for each environment.
+
+To start a specific environment using Docker Compose:
+
+1. **Development**:
+   ```bash
+   docker-compose up app-development
+   ```
+   - Image: `awesome-twitter-app:dev`
+   - Exposed Port: `3000`
+   - Accessible at: `http://localhost:3000`
+
+2. **Staging**:
+   ```bash
+   docker-compose up app-staging
+   ```
+   - Image: `awesome-twitter-app:staging`
+   - Exposed Port: `3001`
+   - Accessible at: `http://localhost:3001`
+
+3. **Production**:
+   ```bash
+   docker-compose up app-production
+   ```
+   - Image: `awesome-twitter-app:prod`
+   - Exposed Port: `3002`
+   - Accessible at: `http://localhost:3002`
 
 > **Note**: Ensure you have Docker installed and running on your machine before executing the above commands.
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import TweetComposeArea from './index';
+import { AVATAR_URL, USERNAME } from '../../../utils';
 
 describe('TweetComposeArea', () => {
   const mockOnChange = jest.fn();
@@ -12,6 +13,8 @@ describe('TweetComposeArea', () => {
         tweetText=""
         onChange={mockOnChange}
         onSubmit={mockOnSubmit}
+        avatarUrl={AVATAR_URL}
+        username={USERNAME}
       />,
     );
   });
